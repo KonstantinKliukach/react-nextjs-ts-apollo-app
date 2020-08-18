@@ -1,0 +1,39 @@
+{
+  "name": "ui",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "codegen": "graphql-codegen --config codegen.yml"
+  },
+  "author": "K.Kliukach",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/client": "^3.1.3",
+    "graphql": "^15.3.0",
+    "graphql-tag": "^2.11.0",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.4.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "1.17.8",
+    "@graphql-codegen/typescript": "1.17.8",
+    "@graphql-codegen/typescript-operations": "1.17.8",
+    "@graphql-codegen/typescript-react-apollo": "^2.0.6",
+    "@types/node": "^12.12.48",
+    "@types/react": "^16.9.41",
+    "@types/react-dom": "^16.9.8",
+    "@typescript-eslint/eslint-plugin": "^3.6.0",
+    "@typescript-eslint/parser": "^3.6.0",
+    "eslint": "^7.4.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.6",
+    "typescript": "^3.9.6"
+  }
+}
