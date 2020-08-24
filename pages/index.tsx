@@ -3,6 +3,8 @@ import React from 'react';
 import { NextPage } from 'next';
 import { withApollo } from '../lib/apollo';
 import { useTasksQuery, TaskStatus } from '../generated/graphql';
+import TasksList from '../components/TasksList';
+import TaskCreateForm from '../components/TaskCreateForm';
 
 interface InitialProps {}
 
@@ -24,11 +26,10 @@ const IndexPage: NextPage<Props, InitialProps> = () => {
   const tasks = data?.tasks;
   return tasks
     ? (
-      <ul>
-        {
-          tasks.map((task) => <li key={task.id}>{task.title}</li>)
-        }
-      </ul>
+      <>
+        <TaskCreateForm />
+        <TasksList tasks={tasks} />
+      </>
     )
     : null;
 };
