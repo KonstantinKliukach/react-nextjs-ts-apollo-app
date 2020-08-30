@@ -11,7 +11,7 @@ interface InitialProps {}
 type Props = InitialProps
 
 const IndexPage: NextPage<Props, InitialProps> = () => {
-  const { loading, error, data } = useTasksQuery({
+  const { loading, error, data, refetch } = useTasksQuery({
     variables: {
       status: TaskStatus.Active,
     },
@@ -27,7 +27,7 @@ const IndexPage: NextPage<Props, InitialProps> = () => {
   return tasks
     ? (
       <>
-        <TaskCreateForm />
+        <TaskCreateForm onTaskCreated={refetch} />
         <TasksList tasks={tasks} />
       </>
     )

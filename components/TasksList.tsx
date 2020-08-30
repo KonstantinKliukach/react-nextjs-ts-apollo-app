@@ -1,5 +1,7 @@
 import React from 'react';
+import Link from 'next/link';
 import { Task } from '../generated/graphql';
+import TaskListItem from './TaskListItem';
 
 interface Tasks {
   tasks: Task[];
@@ -8,7 +10,9 @@ interface Tasks {
 const TasksList: React.FC<Tasks> = ({ tasks }) => (
   <ul className={'task-list'}>
     {
-      tasks.map((task) => <li className={'task-list-item'} key={task.id}>{task.title}</li>)
+      tasks.map((task) => (
+        <TaskListItem task={task} key={task.id} />
+      ))
     }
   </ul>
 );
