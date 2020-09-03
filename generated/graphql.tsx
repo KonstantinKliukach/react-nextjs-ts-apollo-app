@@ -87,6 +87,20 @@ export enum CacheControlScope {
 }
 
 
+export type ChangeTaskStatusMutationVariables = Exact<{
+  id: Scalars['Int'];
+  status: TaskStatus;
+}>;
+
+
+export type ChangeTaskStatusMutation = (
+  { __typename?: 'Mutation' }
+  & { changeStatus?: Maybe<(
+    { __typename?: 'Task' }
+    & Pick<Task, 'id' | 'status' | 'title'>
+  )> }
+);
+
 export type CreateTaskMutationVariables = Exact<{
   input: CreateTaskInput;
 }>;
@@ -153,6 +167,41 @@ export type UpdateTaskMutation = (
 );
 
 
+export const ChangeTaskStatusDocument = gql`
+    mutation ChangeTaskStatus($id: Int!, $status: TaskStatus!) {
+  changeStatus(id: $id, status: $status) {
+    id
+    status
+    title
+  }
+}
+    `;
+export type ChangeTaskStatusMutationFn = Apollo.MutationFunction<ChangeTaskStatusMutation, ChangeTaskStatusMutationVariables>;
+
+/**
+ * __useChangeTaskStatusMutation__
+ *
+ * To run a mutation, you first call `useChangeTaskStatusMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useChangeTaskStatusMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [changeTaskStatusMutation, { data, loading, error }] = useChangeTaskStatusMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      status: // value for 'status'
+ *   },
+ * });
+ */
+export function useChangeTaskStatusMutation(baseOptions?: Apollo.MutationHookOptions<ChangeTaskStatusMutation, ChangeTaskStatusMutationVariables>) {
+        return Apollo.useMutation<ChangeTaskStatusMutation, ChangeTaskStatusMutationVariables>(ChangeTaskStatusDocument, baseOptions);
+      }
+export type ChangeTaskStatusMutationHookResult = ReturnType<typeof useChangeTaskStatusMutation>;
+export type ChangeTaskStatusMutationResult = Apollo.MutationResult<ChangeTaskStatusMutation>;
+export type ChangeTaskStatusMutationOptions = Apollo.BaseMutationOptions<ChangeTaskStatusMutation, ChangeTaskStatusMutationVariables>;
 export const CreateTaskDocument = gql`
     mutation CreateTask($input: CreateTaskInput!) {
   createTask(input: $input) {
